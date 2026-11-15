@@ -9,7 +9,7 @@ Sistema orientado a objetos en Python, **sin bases de datos**, que gestiona clie
 | # | Integrante | Usuario GitHub | Aporte | Estado |
 |---|---|---|---|---|
 | 1 | Juan Herrera | [@juanherrera1807](https://github.com/juanherrera1807) | Estructura base, excepciones personalizadas y archivo de logs | ✅ |
-| 2 | _completar_ | _completar_ | _completar_ | ⏳ |
+| 2 | Juan Toloza | [@joker120620](https://github.com/joker120620) | Modelos POO (EntidadBase, Cliente, Servicio, Reserva), jerarquía de servicios y script de simulación de 10 operaciones| ✅ |
 | 3 | _completar_ | _completar_ | _completar_ | ⏳ |
 | 4 | _completar_ | _completar_ | _completar_ | ⏳ |
 | 5 | _completar_ | _completar_ | _completar_ | ⏳ |
