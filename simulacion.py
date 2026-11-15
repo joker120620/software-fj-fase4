@@ -35,7 +35,7 @@ def ejecutar_simulacion():
             print(f"  Error crítico: {e}")
         else:
             log.info(f"Operación {i} completada sin novedad")
-            print(f"  Éxito en op {i}: {res if res is not True else Completado}")
+            print(f"  Éxito en op {i}: {res if res is not True else 'Completado'}")
         finally:
             print(f"  [finally] Cierre de ciclo {i}")
 
