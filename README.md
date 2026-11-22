@@ -1,72 +1,60 @@
-# Software FJ — Sistema Integral de Gestión de Clientes, Servicios y Reservas
+# Software FJ - Sistema Integral de Gestion de Clientes, Servicios y Reservas
 
-Proyecto colaborativo de la **Fase 4 — Componente práctico** del curso **Programación (213023)**, UNAD.
+Proyecto desarrollado para la **Fase 4 - Componente practico: Practicas simuladas** del curso **Programacion (213023)**, Escuela de Ciencias Basicas, Tecnologia e Ingenieria (ECBTI), UNAD.
 
-Sistema orientado a objetos en Python, **sin bases de datos**, que gestiona clientes, servicios (reserva de salas, alquiler de equipos y asesorías especializadas) y reservas. Aplica abstracción, herencia, polimorfismo, encapsulación y un manejo avanzado de excepciones. Todos los eventos y errores se registran en un archivo de logs.
+## Informacion del Estudiante
+- **Estudiante:** Juan David Toloza Ortega
+- **Usuario GitHub:** [@joker120620](https://github.com/joker120620)
+- **Grupo:** 213023_190
+- **Tutor:** Jhon Harold Patiño Pantoja
+- **Modalidad:** Desarrollo individual (asumido ante ausencia de comunicacion y coordinacion en el foro colaborativo)
 
-## Integrantes
+## Descripcion del Sistema
+Aplicacion orientada a objetos en Python desarrollada bajo principios de modularidad, encapsulacion, herencia, polimorfismo y manejo robusto de excepciones. El sistema gestiona clientes, servicios especializados (salas de reunion, alquiler de equipos y asesorias especializadas) y reservas, operando sin motores de base de datos relacionales mediante estructuras de objetos y listas en memoria, registrando las operaciones y excepciones en un archivo de logs.
 
-| # | Integrante | Usuario GitHub | Aporte | Estado |
-|---|---|---|---|---|
-| 1 | Juan Herrera | [@juanherrera1807](https://github.com/juanherrera1807) | Estructura base, excepciones personalizadas y archivo de logs | ✅ |
-| 2 | Juan Toloza | [@joker120620](https://github.com/joker120620) | Modelos POO (EntidadBase, Cliente, Servicio, Reserva), jerarquía de servicios y script de simulación de 10 operaciones| ✅ |
-| 3 | _completar_ | _completar_ | _completar_ | ⏳ |
-| 4 | _completar_ | _completar_ | _completar_ | ⏳ |
-| 5 | _completar_ | _completar_ | _completar_ | ⏳ |
+## Requisitos de Ejecucion
+- Python 3.10 o superior.
+- Sin dependencias externas (utiliza unicamente la biblioteca estandar de Python).
 
-## Requisitos
+## Estructura del Proyecto
+```
+software-fj-fase4/
+├── logs/
+│   └── software_fj.log       # Registro cronologico de eventos, errores y excepciones
+├── software_fj/
+│   ├── __init__.py           # Paquete principal
+│   ├── excepciones.py        # Jerarquia de excepciones personalizadas con codigos SFJ
+│   ├── modelos.py            # Entidades POO, servicios polimorficos, reservas y gestor
+│   └── registro.py           # Configuracion del sistema centralizado de logs
+├── tests/
+│   ├── test_excepciones.py   # Pruebas unitarias de excepciones y encadenamiento
+│   └── test_modelos.py       # Pruebas unitarias de modelos, reservas y gestor
+├── simulacion.py             # Script de simulacion con 13 operaciones completas
+└── README.md
+```
 
-- Python 3.10 o superior
-- Sin librerías externas (solo la biblioteca estándar)
+## Jerarquia de Excepciones Personalizadas
+Todas las excepciones del dominio heredan de la clase base `SoftwareFJError` y poseen un codigo identificador para trazabilidad en logs:
 
-## Ejecución de pruebas
+- `SoftwareFJError` (SFJ-000)
+  - `ValidacionError` (SFJ-100)
+    - `ClienteInvalidoError` (SFJ-101)
+    - `ParametroFaltanteError` (SFJ-102)
+    - `ServicioInvalidoError` (SFJ-103)
+  - `ServicioNoDisponibleError` (SFJ-200)
+  - `ReservaInvalidaError` (SFJ-300)
+  - `OperacionNoPermitidaError` (SFJ-301)
+  - `CalculoInconsistenteError` (SFJ-400)
+  - `EntidadNoEncontradaError` (SFJ-500)
 
+## Ejecucion de Pruebas Unitarias
+Para ejecutar la suite completa de pruebas unitarias desde la raiz del proyecto:
 ```bash
 python -m unittest discover -s tests -v
 ```
 
-## Estructura actual
-
+## Ejecucion de la Simulacion
+Para ejecutar las operaciones simuladas y verificar el manejo de excepciones y generacion de logs:
+```bash
+python simulacion.py
 ```
-.
-├── software_fj/
-│   ├── __init__.py
-│   ├── excepciones.py   # Jerarquía de excepciones personalizadas
-│   └── registro.py      # Configuración del archivo de logs (logs/software_fj.log)
-└── tests/
-    └── test_excepciones.py
-```
-
-## Excepciones personalizadas disponibles
-
-Todas heredan de `SoftwareFJError`, y cada una tiene un código que facilita ubicarla en el log.
-
-```
-SoftwareFJError                    (SFJ-000)
-├── ValidacionError                (SFJ-100)
-│   ├── ClienteInvalidoError       (SFJ-101)
-│   ├── ParametroFaltanteError     (SFJ-102)
-│   └── ServicioInvalidoError      (SFJ-103)
-├── ServicioNoDisponibleError      (SFJ-200)
-├── ReservaInvalidaError           (SFJ-300)
-├── OperacionNoPermitidaError      (SFJ-301)
-├── CalculoInconsistenteError      (SFJ-400)
-└── EntidadNoEncontradaError       (SFJ-500)
-```
-
-## Uso del logger
-
-```python
-from software_fj.registro import obtener_logger
-
-logger = obtener_logger("mi_modulo")
-logger.info("Evento registrado")
-logger.error("Error registrado")
-```
-
-## Flujo de trabajo en GitHub
-
-1. Cada integrante trabaja en su propia rama.
-2. Cada tarea tiene un issue asignado.
-3. Se hacen commits pequeños y descriptivos (`feat:`, `fix:`, `docs:`, `test:`).
-4. Los cambios se integran a `main` mediante pull requests revisados por otro integrante.
